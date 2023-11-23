@@ -1,0 +1,1 @@
+SELECT * FROM prueba.paciente WHERE nombres = 'Erick Villacorta';
