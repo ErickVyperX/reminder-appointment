@@ -4,93 +4,93 @@ import java.sql.Timestamp;
 import java.util.StringJoiner;
 
 public class PatientDTO {
-    private double key;
-    private String nombres;
-    private String cel;
-    private Timestamp fecha_cita;
-    private Timestamp fecha_registro;
-    private String area;
-    private boolean reminder_sent;
+    private double patientKey;
+    private String fullName;
+    private String cellphone;
+    private Timestamp appointmentDate;
+    private Timestamp registerDate;
+    private String attentionArea;
+    private boolean reminderSent;
 
     public PatientDTO(){
     }
 
-    public PatientDTO(double key, String nombres, String cel, Timestamp fecha_cita, Timestamp fecha_registro, String area, boolean reminder_sent) {
-        this.key = key;
-        this.nombres = nombres;
-        this.cel = cel;
-        this.fecha_cita = fecha_cita;
-        this.fecha_registro = fecha_registro;
-        this.area = area;
-        this.reminder_sent = reminder_sent;
+    public PatientDTO(double patientKey, String fullName, String cellphone, Timestamp appointmentDate, Timestamp registerDate, String attentionArea, boolean reminderSent) {
+        this.patientKey = patientKey;
+        this.fullName = fullName;
+        this.cellphone = cellphone;
+        this.appointmentDate = appointmentDate;
+        this.registerDate = registerDate;
+        this.attentionArea = attentionArea;
+        this.reminderSent = reminderSent;
     }
 
-    public double getKey() {
-        return key;
+    public double getPatientKey() {
+        return patientKey;
     }
 
-    public void setKey(double key) {
-        this.key = key;
+    public void setPatientKey(double patientKey) {
+        this.patientKey = patientKey;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getCel() {
-        return cel;
+    public String getCellphone() {
+        return cellphone;
     }
 
-    public void setCel(String cel) {
-        this.cel = cel;
+    public void setCellphone(String cellphone) {
+        this.cellphone = cellphone;
     }
 
-    public Timestamp getFecha_cita() {
-        return fecha_cita;
+    public Timestamp getAppointmentDate() {
+        return appointmentDate;
     }
 
-    public void setFecha_cita(Timestamp fecha_cita) {
-        this.fecha_cita = fecha_cita;
+    public void setAppointmentDate(Timestamp appointmentDate) {
+        this.appointmentDate = appointmentDate;
     }
 
-    public Timestamp getFecha_registro() {
-        return fecha_registro;
+    public Timestamp getRegisterDate() {
+        return registerDate;
     }
 
-    public void setFecha_registro(Timestamp fecha_registro) {
-        this.fecha_registro = fecha_registro;
+    public void setRegisterDate(Timestamp registerDate) {
+        this.registerDate = registerDate;
     }
 
-    public boolean isReminder_sent() {
-        return reminder_sent;
+    public boolean isReminderSent() {
+        return reminderSent;
     }
 
-    public void setReminder_sent(boolean reminder_sent) {
-        this.reminder_sent = reminder_sent;
+    public void setReminderSent(boolean reminderSent) {
+        this.reminderSent = reminderSent;
     }
 
-    public String getArea() {
-        return area;
+    public String getAttentionArea() {
+        return attentionArea;
     }
 
-    public void setArea(String area) {
-        this.area = area;
+    public void setAttentionArea(String attentionArea) {
+        this.attentionArea = attentionArea;
     }
 
     @Override
     public String toString() {
         return new StringJoiner(", ", PatientDTO.class.getSimpleName() + "[", "]")
-                .add("ID=" + key)
-                .add("Nombres='" + nombres + "'")
-                .add("Cel='" + cel + "'")
-                .add("Registro=" + fecha_registro)
-                .add("Cita=" + fecha_cita)
-                .add("Area=" + area)
-                .add("Reminder Sent=" + reminder_sent)
+                .add("ID=" + patientKey)
+                .add("FullName='" + fullName + "'")
+                .add("Cel='" + cellphone + "'")
+                .add("Register=" + registerDate)
+                .add("Appointment=" + appointmentDate)
+                .add("Area=" + attentionArea)
+                .add("Reminder=" + reminderSent)
                 .toString();
     }
 }

@@ -1,6 +1,6 @@
 package gob.irencentro.reminderappointment.servicelayer;
 
-import gob.irencentro.reminderappointment.datalayer.Patient;
+import gob.irencentro.reminderappointment.datalayer.PatientDTO;
 import gob.irencentro.reminderappointment.datalayer.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,11 +15,7 @@ public class PatientService {
         this.patientRepository = patientRepository;
     }
 
-    public List<Patient> patientsWithAppointments() {
+    public List<PatientDTO> listPatients() {
         return patientRepository.findAll();
-    }
-
-    public Patient patientErick() {
-        return patientRepository.selectPatient();
     }
 }
