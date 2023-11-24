@@ -19,7 +19,7 @@ FROM
         INNER JOIN ehcos.label ll ON brm.long_desc_label = ll.label_code
         INNER JOIN health_kernel.patient p ON appo.patient_key = p.patient_key
 WHERE
-    (DATE(appo.date_time) = CURRENT_DATE + INTERVAL '1 DAY' OR DATE(appo.date_time) = CURRENT_DATE + INTERVAL '2 DAY')
+    (DATE(appo.date_time) = CURRENT_DATE + INTERVAL '1 DAY' OR DATE(appo.date_time) = CURRENT_DATE + INTERVAL 'TO_RANGE_VALUE DAY')
   AND annulment_reason_type IS NULL
   AND appo.deleted = FALSE
   AND pro.deleted = FALSE

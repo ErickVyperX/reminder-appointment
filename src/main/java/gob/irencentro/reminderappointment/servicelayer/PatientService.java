@@ -18,4 +18,7 @@ public class PatientService {
     public List<PatientDTO> listPatients() {
         return patientRepository.findAll();
     }
+    public void updateQueryParameters() {
+        patientRepository.updateAppointmentDay();
+    }
 }
