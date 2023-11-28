@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ReminderAppointmentApplication implements CommandLineRunner {
     PatientService patientService;
-    Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     public ReminderAppointmentApplication(PatientService patientService) {
         this.patientService = patientService;
@@ -23,7 +23,6 @@ public class ReminderAppointmentApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        logger.info(">>List: {}", patientService.patientsWithAppointments());
-        logger.info(">>List: {}", patientService.listPatients());
+        patientService.getPatientsWithAppointments();
     }
 }

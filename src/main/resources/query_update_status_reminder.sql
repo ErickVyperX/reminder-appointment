@@ -1,0 +1,1 @@
+UPDATE health_kernel.appointment SET reminder_sent = ? WHERE patient_key = ? AND date_time = ? AND insert_date = ?

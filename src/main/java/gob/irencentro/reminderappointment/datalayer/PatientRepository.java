@@ -13,26 +13,35 @@ import java.util.List;
 @Repository
 public class PatientRepository {
     private final JdbcTemplate jdbcTemplate;
-    private String appointmentsQuery;
+    private String patientsQuery;
+    private final String reminderQuery;
 
     @Autowired
     public PatientRepository(JdbcTemplate jdbcTemplate, ResourceLoader resourceLoader) throws IOException {
         this.jdbcTemplate = jdbcTemplate;
-        this.appointmentsQuery = StreamUtils.copyToString(
+        this.patientsQuery = StreamUtils.copyToString(
                 resourceLoader.getResource("classpath:query-patients-with-appointments.sql").getInputStream(),
                 StandardCharsets.UTF_8);
         updateAppointmentDay();
+        this.reminderQuery = StreamUtils.copyToString(
+                resourceLoader.getResource("classpath:query_update_status_reminder.sql").getInputStream(),
+                StandardCharsets.UTF_8);
     }
+
     public List<PatientDTO> findAll() {
-        return jdbcTemplate.query(appointmentsQuery, new PatientRowMapper());
+        return jdbcTemplate.query(patientsQuery, new PatientRowMapper());
+    }
+
+    public void updateStatusReminder(PatientDTO patientDTO) {
+        jdbcTemplate.update(reminderQuery, true, patientDTO.getPatientKey(), patientDTO.getAppointmentDate(), patientDTO.getRegisterDate());
     }
 
     public void updateAppointmentDay() {
         switch (LocalDate.now().getDayOfWeek()) {
             case MONDAY, TUESDAY, WEDNESDAY, THURSDAY ->
-                this.appointmentsQuery = this.appointmentsQuery.replace("TO_RANGE_VALUE", "2");
+                this.patientsQuery = this.patientsQuery.replace("TO_RANGE_VALUE", "2");
             case FRIDAY ->
-                this.appointmentsQuery = this.appointmentsQuery.replace("TO_RANGE_VALUE", "3");
+                this.patientsQuery = this.patientsQuery.replace("TO_RANGE_VALUE", "3");
         }
     }
 }
