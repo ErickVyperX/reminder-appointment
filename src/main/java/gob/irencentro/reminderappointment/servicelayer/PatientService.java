@@ -47,7 +47,7 @@ public class PatientService {
         }
     }
 
-    private Response sendReminderAPI(OkHttpClient client, PatientDTO patientDTO) throws IOException, InterruptedException {
+    private Response sendReminderAPI(OkHttpClient client, PatientDTO patientDTO) throws IOException {
         String formattedDate = formatDate(patientDTO.getAppointmentDate());
         String messageBody = buildMessageBody(patientDTO, formattedDate);
         RequestBody body = new FormBody.Builder()
