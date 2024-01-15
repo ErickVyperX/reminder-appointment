@@ -2,6 +2,7 @@ package gob.irencentro.reminderappointment.datalayer;
 
 import lombok.*;
 import java.sql.Timestamp;
+
 @Getter
 @Setter
 @NoArgsConstructor

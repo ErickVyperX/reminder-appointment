@@ -69,13 +69,16 @@ public class PatientService {
     }
 
     private String buildMessageBody(PatientDTO patientDTO, String formattedDate) {
-        return "\uD83E\uDD16 Hola " + patientDTO.getFullName() + "\n\uD83C\uDFE5 IREN CENTRO te informa" +
-                " que tienes una cita pendiente! \n" +
-                "FECHA: " + formattedDate + ".\n" +
-                "CONSULTORIO: " + patientDTO.getAttentionArea() + ".\n" +
-                "¡RECUERDA ACERCARTE MEDIA HORA ANTES DE TU CITA!\n" +
-                "==CONFIRMANOS TU ASISTENCIA==\n\n" +
-                "NOTA: Si crees que recibiste este mensaje por equivocación, por favor omítelo.\n";
+        return """
+        \uD83E\uDD16 Hola %s
+        \uD83C\uDFE5 IREN CENTRO te informa que tienes una cita pendiente!
+        FECHA: %s.
+        CONSULTORIO: %s.
+        ¡RECUERDA ACERCARTE MEDIA HORA ANTES DE TU CITA!
+        ==CONFIRMANOS TU ASISTENCIA==
+
+        NOTA: Si crees que recibiste este mensaje por equivocación, por favor omítelo.
+        """.formatted(patientDTO.getFullName(), formattedDate, patientDTO.getAttentionArea());
     }
 
     private String formatDate(Timestamp appointmentDate) {
